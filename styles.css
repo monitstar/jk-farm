@@ -21,11 +21,13 @@
 }
 
 html {
+  overflow-x: hidden;
   scroll-behavior: smooth;
 }
 
 body {
   margin: 0;
+  overflow-x: hidden;
   background: var(--mist);
   color: var(--ink);
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -594,56 +596,107 @@ textarea {
   transform: scale(1.035);
 }
 
-.rules-layout {
-  align-items: start;
+.rules-section .rules-layout {
+  grid-template-columns: 1fr;
+  min-width: 0;
+}
+
+.rules-section .rules-layout > * {
+  min-width: 0;
+}
+
+.rules-copy {
+  display: grid;
+  gap: 10px;
+  max-width: 920px;
 }
 
 .rules-copy p:not(.eyebrow) {
-  margin: 10px 0 0;
+  margin: 0;
   color: rgba(255, 255, 255, 0.74);
-  font-size: 1.02rem;
+  font-size: 1.08rem;
   font-weight: 800;
 }
 
 .rules-list {
   display: grid;
-  gap: 10px;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  min-width: 0;
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
 .rules-list li {
-  position: relative;
-  padding: 13px 14px 13px 42px;
+  display: grid;
+  grid-template-columns: 48px minmax(0, 1fr);
+  gap: 14px;
+  min-width: 0;
+  min-height: 112px;
+  padding: 16px;
   border: 1px solid rgba(255, 255, 255, 0.13);
   border-radius: var(--radius);
-  background: rgba(255, 255, 255, 0.06);
-  font-weight: 800;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03)),
+    rgba(255, 255, 255, 0.04);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.1);
 }
 
-.rules-list li::before {
-  content: "";
-  position: absolute;
-  left: 16px;
-  top: 20px;
-  width: 10px;
-  height: 10px;
+.rule-icon {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
-  background: var(--gold);
-  box-shadow: 0 0 0 5px rgba(255, 194, 26, 0.12);
+  background: rgba(255, 194, 26, 0.15);
+  color: var(--gold);
+  box-shadow: inset 0 0 0 1px rgba(255, 194, 26, 0.25);
+}
+
+.rule-icon svg {
+  width: 27px;
+  height: 27px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.rules-list strong,
+.rules-list small {
+  display: block;
+}
+
+.rules-list strong {
+  color: var(--white);
+  font-size: 1rem;
+  line-height: 1.18;
+}
+
+.rules-list small {
+  margin-top: 5px;
+  color: rgba(255, 255, 255, 0.68);
+  font-weight: 750;
+  line-height: 1.38;
 }
 
 .rules-note {
-  grid-column: 1 / -1;
-  padding: 18px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  min-width: 0;
+  padding: 16px;
   border: 1px solid rgba(255, 194, 26, 0.32);
   border-radius: var(--radius);
   background: rgba(255, 194, 26, 0.1);
 }
 
 .rules-note p {
-  margin: 0 0 8px;
+  margin: 0;
   color: rgba(255, 255, 255, 0.9);
   font-weight: 900;
 }
@@ -651,13 +704,89 @@ textarea {
 .rules-note a {
   color: var(--gold);
   font-weight: 1000;
+  white-space: nowrap;
+}
+
+.contact-panel {
+  align-self: center;
+}
+
+.contact-location {
+  margin: 10px 0 0;
+  color: var(--muted);
+  font-size: clamp(1.05rem, 3vw, 1.35rem);
+  font-weight: 850;
 }
 
 .contact-actions {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: 1fr;
   gap: 12px;
   margin-top: 24px;
+}
+
+.contact-action-card {
+  display: grid;
+  grid-template-columns: 42px minmax(0, 1fr);
+  align-items: center;
+  gap: 12px;
+  min-height: 66px;
+  padding: 12px;
+  border: 1px solid rgba(6, 27, 47, 0.12);
+  border-radius: var(--radius);
+  background: var(--white);
+  color: var(--navy);
+  box-shadow: 0 12px 28px rgba(4, 24, 40, 0.08);
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.contact-action-card:hover,
+.contact-action-card:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 35px rgba(4, 24, 40, 0.14);
+}
+
+.contact-action-primary {
+  background: linear-gradient(135deg, var(--gold), var(--orange));
+}
+
+.contact-action-icon {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: rgba(6, 27, 47, 0.08);
+  color: var(--navy);
+}
+
+.contact-action-icon svg {
+  width: 24px;
+  height: 24px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.contact-action-card small,
+.contact-action-card strong {
+  display: block;
+  line-height: 1.15;
+}
+
+.contact-action-card small {
+  color: rgba(6, 27, 47, 0.62);
+  font-size: 0.78rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.contact-action-card strong {
+  margin-top: 3px;
+  font-size: clamp(0.95rem, 3.4vw, 1.12rem);
+  overflow-wrap: anywhere;
 }
 
 .map-card {
@@ -671,27 +800,44 @@ textarea {
 
 .map-card iframe {
   width: 100%;
-  min-height: 300px;
+  min-height: 320px;
   border: 0;
 }
 
 .map-card-footer {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
   align-items: center;
-  justify-content: space-between;
   gap: 10px;
   padding: 14px 16px;
   border-top: 1px solid rgba(6, 27, 47, 0.1);
+}
+
+.map-card-footer strong,
+.map-card-footer small {
+  display: block;
 }
 
 .map-card-footer strong {
   color: var(--navy);
 }
 
+.map-card-footer small {
+  color: var(--muted);
+  font-weight: 800;
+}
+
 .map-card-footer a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  padding: 9px 12px;
+  border-radius: var(--radius);
+  background: rgba(8, 169, 214, 0.1);
   color: var(--blue);
   font-weight: 900;
+  white-space: nowrap;
 }
 
 .site-footer {
@@ -736,6 +882,18 @@ textarea {
   .price-row {
     grid-template-columns: 1.15fr 0.85fr 0.95fr;
     align-items: center;
+  }
+
+  .rules-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .contact-actions {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .contact-action-primary {
+    grid-column: span 2;
   }
 
   .gallery-wide {
@@ -795,9 +953,16 @@ textarea {
   }
 
   .payment-layout,
-  .rules-layout,
   .contact-layout {
     grid-template-columns: minmax(0, 0.95fr) minmax(280px, 1.05fr);
+  }
+
+  .rules-section .rules-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .rules-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .gallery-grid {
@@ -832,6 +997,14 @@ textarea {
   .hero-content {
     padding-left: 0;
     padding-right: 0;
+  }
+
+  .rules-list {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+
+  .rules-list li {
+    grid-template-columns: 1fr;
   }
 }
 
