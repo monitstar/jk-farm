@@ -71,16 +71,14 @@ textarea {
   min-width: 0;
 }
 
-.brand-mark {
-  display: grid;
-  place-items: center;
-  width: 42px;
+.brand-logo {
+  width: 58px;
   height: 42px;
-  border: 2px solid var(--gold);
-  background: linear-gradient(135deg, var(--gold), var(--orange));
-  color: var(--navy);
-  font-weight: 900;
-  border-radius: 50%;
+  object-fit: contain;
+  padding: 3px 5px;
+  background: var(--white);
+  border: 1px solid rgba(255, 194, 26, 0.5);
+  border-radius: var(--radius);
   flex: 0 0 auto;
 }
 
@@ -710,6 +708,7 @@ textarea {
 .site-footer {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 8px;
   padding: 26px 18px;
   background: #04111f;
@@ -717,8 +716,20 @@ textarea {
   text-align: center;
 }
 
-.site-footer p {
-  margin: 0;
+.footer-brand {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.footer-brand img {
+  width: 54px;
+  height: 38px;
+  object-fit: contain;
+  padding: 3px 5px;
+  background: var(--white);
+  border-radius: var(--radius);
 }
 
 .site-footer a {
