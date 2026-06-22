@@ -298,66 +298,54 @@ h3 {
 }
 
 .highlight-icon {
-  position: relative;
+  display: grid;
+  place-items: center;
   width: 42px;
   height: 42px;
   border-radius: 50%;
   background: rgba(8, 169, 214, 0.14);
+  color: var(--blue);
   flex: 0 0 auto;
 }
 
-.highlight-icon::before,
-.highlight-icon::after {
-  content: "";
-  position: absolute;
-  inset: 12px;
-  border-radius: 999px;
+.highlight-icon svg {
+  width: 28px;
+  height: 28px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
-.pool-icon::before {
-  border-top: 4px solid var(--pool);
-  border-bottom: 4px solid var(--blue);
-  transform: rotate(-8deg);
+.pool-icon {
+  background: rgba(8, 169, 214, 0.15);
+  color: var(--blue);
 }
 
-.jacuzzi-icon::before {
-  background: var(--pool);
-  box-shadow: 0 9px 0 rgba(8, 169, 214, 0.3);
+.jacuzzi-icon {
+  background: rgba(8, 169, 214, 0.16);
+  color: var(--pool);
 }
 
 .farm-icon {
   background: rgba(95, 170, 70, 0.14);
-}
-
-.farm-icon::before {
-  background: var(--green);
-  transform: rotate(42deg);
+  color: var(--green);
 }
 
 .sunset-icon {
   background: rgba(255, 194, 26, 0.18);
+  color: var(--orange);
 }
 
-.sunset-icon::before {
-  border-top: 12px solid var(--gold);
-  border-left: 12px solid transparent;
-  border-right: 12px solid transparent;
-  inset: 9px 8px 17px;
-}
-
-.room-icon::before {
-  background: var(--blue);
-  border-radius: 2px;
+.room-icon {
+  background: rgba(4, 121, 184, 0.13);
+  color: var(--blue);
 }
 
 .family-icon {
   background: rgba(242, 139, 46, 0.18);
-}
-
-.family-icon::before {
-  background: var(--orange);
-  box-shadow: 12px 0 0 var(--gold), -12px 0 0 var(--pool);
-  inset: 15px 17px 12px;
+  color: var(--orange);
 }
 
 .image-band {
@@ -445,20 +433,6 @@ h3 {
 .poster-frame {
   margin: 0;
   align-self: start;
-}
-
-.booking-poster-banner {
-  margin: 18px 0 0;
-  overflow: hidden;
-  border-radius: var(--radius);
-  border: 1px solid rgba(255, 194, 26, 0.22);
-  box-shadow: 0 18px 38px rgba(0, 0, 0, 0.18);
-}
-
-.booking-poster-banner img {
-  height: 170px;
-  object-fit: cover;
-  object-position: center 78%;
 }
 
 .poster-frame img {
@@ -571,41 +545,30 @@ textarea {
   font-size: 1.05rem;
 }
 
-.qr-placeholder {
+.qr-card {
   display: grid;
-  place-items: center;
-  min-height: 300px;
-  border: 1px dashed rgba(6, 27, 47, 0.28);
+  gap: 12px;
+  justify-items: center;
+  margin: 0;
+  padding: 18px;
+  border: 1px solid rgba(6, 27, 47, 0.1);
   border-radius: var(--radius);
-  background:
-    linear-gradient(45deg, rgba(4, 121, 184, 0.06) 25%, transparent 25%),
-    linear-gradient(-45deg, rgba(4, 121, 184, 0.06) 25%, transparent 25%),
-    var(--mist);
-  background-size: 22px 22px;
-}
-
-.qr-box {
-  display: grid;
-  place-items: center;
-  width: min(220px, 70vw);
-  aspect-ratio: 1;
-  background: var(--white);
-  border: 8px solid var(--navy);
-  border-radius: var(--radius);
+  background: var(--mist);
   box-shadow: var(--shadow);
-  text-align: center;
 }
 
-.qr-box span {
-  color: var(--navy);
-  font-size: 2rem;
-  font-weight: 1000;
-  line-height: 1;
+.qr-card img {
+  width: min(360px, 100%);
+  max-height: 520px;
+  object-fit: contain;
+  border-radius: var(--radius);
+  background: var(--white);
 }
 
-.qr-box small {
+.qr-card figcaption {
   color: var(--muted);
   font-weight: 800;
+  text-align: center;
 }
 
 .gallery-grid {
