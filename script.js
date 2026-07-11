@@ -1,7 +1,7 @@
 const bookingForm = document.querySelector("#bookingForm");
 const successMessage = document.querySelector("#successMessage");
 
-const GOOGLE_SCRIPT_URL = "PASTE_YOUR_WEB_APP_URL_HERE";
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbz112x4OOy0CxUl6cX9NUMm0hDqjW_DcNQlaLYOMZeTckzou649HWqLztXukAXmtMqv/exec";
 
 if (bookingForm && successMessage) {
   bookingForm.addEventListener("submit", async (event) => {
