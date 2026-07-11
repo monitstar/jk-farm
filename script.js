@@ -25,7 +25,7 @@ if (bookingForm && successMessage) {
 
     successMessage.hidden = false;
     successMessage.textContent =
-      "Thank you! We received your booking request. Please send your payment screenshot on WhatsApp. We will verify payment and confirm your slot by email/WhatsApp.";
+      "Thank you! We received your booking request. Please send your payment screenshot on WhatsApp: +91 8559-994575. We will verify payment and confirm your slot by email/WhatsApp.";
 
     bookingForm.reset();
     successMessage.scrollIntoView({ behavior: "smooth", block: "center" });
